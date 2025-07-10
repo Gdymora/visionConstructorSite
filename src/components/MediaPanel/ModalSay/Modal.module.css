@@ -1,0 +1,60 @@
+/* Modal.module.css */
+.modalHeader {
+    padding: 16px;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.modalCloseButton {
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.2s ease;
+    &:hover {
+        color: #ff0000; /* Змінити колір при наведенні */
+    }
+}
+
+.modalCloseButton:hover {
+    color: #ff0000;
+}
+
+.modalContent {
+    padding: 20px;
+}
+
+.modalFooter {
+    padding: 16px;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ddd;
+    text-align: right;
+}
+
+.inputField {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.gridBlock {
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
+    margin: 10px;
+}
+
+.sizeCircle {
+    width: 60px;
+    height: 60px;
+}
+
+.textFlexCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-inline-end: 10px;
+}

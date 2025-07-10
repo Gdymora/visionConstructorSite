@@ -1,0 +1,772 @@
+.CodeMirror {
+  transition: width 0.5s, height 0.5s;
+  height: calc(90vh - 150px);
+  flex: 1 !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.CodeMirror-sizer {
+  min-height: 632px;
+}
+
+.custom-modal .CodeMirror-scroll {
+  height: 100% !important;
+}
+
+.gjs-mdl-dialog {  
+  width: 450px !important;
+  height: 90vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.gjs-mdl-content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.gjs-attach-script {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+} 
+
+.CodeMirror-scroll {
+  min-height: 0 !important;
+}
+
+#actns {
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+/* GrapesJS стилі */
+.gjs-toolbar-item {
+  width: 26px;
+  padding: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.gjs-selected {
+  outline: 2px solid #020202 !important;
+}
+
+.gjs-toolbar {
+  background-color: #61707c !important;
+}
+
+.gjs-layer.gjs-hovered {
+  background-color: hsla(0, 0%, 100%, 0.015);
+  background-color: #61707c !important;
+}
+
+.gjs-four-color-h:hover {
+  color: #a3c4e4 !important;
+}
+
+/* Видалити кнопку «Додати зображення» та її текстове поле в модальному вікні асетменеджера */
+.gjs-am-add-asset,
+.gjs-am-assets-header input {
+  display: none;
+}
+
+/* Оптимізація canvas області */
+.gjs-custom-editor-canvas {
+  transition: width 0.3s ease !important;
+  border: 1px solid #e0e0e0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Адаптивна ширина canvas */
+@media (max-width: 1366px) {
+  .gjs-custom-editor-canvas {
+    width: 90% !important;
+    max-width: 1000px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .gjs-custom-editor-canvas {
+    width: 95% !important;
+    max-width: 800px !important;
+    min-width: 500px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .gjs-custom-editor-canvas {
+    width: 98% !important;
+    max-width: none !important;
+    min-width: 320px !important;
+  }
+}
+
+/* CSS змінні */
+:root {
+  --header-bg-color: #d5d5d5;
+  --header-text-color: #fff;
+  --galery-menu-width: 320px;
+  --nav-container-height: 4rem;
+  --menu-left-width: 17px;
+  --menu-top: 145px;
+}
+
+/* Темна тема */
+.dark-mode .dark\:bg-gray-800 {
+  background-color: #1c1e22;
+}
+
+.dark-mode .dark\:bg-gray-700 {
+  background-color: #292b2f;
+}
+
+.dark-mode .dark\:bg-gray-600 {
+  background-color: #383b40;
+}
+
+.dark-mode .dark\:text-white {
+  color: #ffffff;
+}
+
+.dark-mode .dark\:bg-white {
+  background-color: #1c1e22;
+}
+
+.dark-mode .dark\:text-black {
+  color: #ffffff;
+}
+
+/* Sidebar меню */
+.menu_sb {
+  position: fixed;
+  top: var(--menu-left-top);
+  left: 0;
+  height: 100vh;
+  width: var(--menu-left-width);
+  transition: width 0.09s linear;
+  -webkit-transition: width 0.09s linear;
+  z-index: 10;
+  padding-top: 10px;
+  overflow: hidden;
+}
+
+.menu_sb:hover,
+.menu_sb.pinned {
+  width: var(--galery-menu-width);
+  overflow: visible;
+}
+
+.menu_sb li:hover > a,
+.menu_sb li.active > a,
+.menu_sb li > a:focus {
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(29, 79, 215, 0.7);
+}
+
+.menu_sb:hover .sb_left_sidebar,
+.menu_sb.pinned .sb_left_sidebar {
+  display: block;
+}
+
+.menu_sb .sb_left_sidebar {
+  display: none;
+}
+
+.menu_sb > ul > li {
+  position: relative;
+  display: block;
+  width: var(--galery-menu-width);
+}
+
+.menu_sb > ul > li > a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  padding: 10px 0;
+}
+
+.sb_toggle-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 20;
+  display: none;
+}
+
+.menu_sb:hover .sb_toggle-container,
+.menu_sb.pinned .sb_toggle-container {
+  display: block;
+}
+
+.menu_sb .nav-icon {
+  width: 60px;
+  height: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.menu_sb .nav-text {
+  width: 168px;
+  height: 15px;
+  font-family: "Mulish", sans-serif;
+}
+
+.sb_logout {
+  position: absolute;
+  left: 0;
+  bottom: 250px;
+}
+
+/* Верхня навігація */
+.top-nav {
+  display: flex;
+  justify-content: start;
+  list-style: none;
+  padding: 4px 0 !important;
+  margin-left: 2px;
+}
+
+.top-nav li {
+  background: #f3f3f3;
+  border: none;
+  border-left: 1px solid #d5d5d5;
+  border-right: 1px solid #d5d5d5;
+  border-top: 1px solid #d5d5d5;
+  color: #333;
+  display: block;
+  margin: 0 1px 0 0;
+  padding: 2px 6px !important;
+  position: relative;
+}
+
+.top-nav > li:hover {
+  background-color: rgba(218, 221, 228, 0.7);
+}
+
+.top-nav button {
+  padding: 2px 10px;
+  cursor: pointer;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: black;
+  padding: 10px 15px;
+  display: block;
+}
+
+/* Submenu styling */
+.top-nav .sub {
+  display: none;
+  position: absolute;
+  left: 0;
+  background: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  padding: 0;
+  margin-top: -1px;
+  z-index: 130;
+}
+
+.top-nav .sub li {
+  background-color: rgba(218, 221, 228, 0.7);
+  border: none;
+  border-left: 1px solid #d5d5d5;
+  border-bottom: 1px solid #d5d5d5;
+  color: #333;
+  display: block;
+  margin: 0 0 0 1px;
+  padding: 4px 8px 2px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.top-nav .sub li:hover {
+  background-color: rgba(238, 239, 242, 0.7);
+}
+
+.top-nav li:hover .sub {
+  display: block;
+}
+
+.general-menu .sub a {
+  padding: 10px 15px;
+}
+
+.general-menu .sub button {
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+}
+
+.top-nav .sub li.disabled {
+  background: #d0cbcb;
+}
+
+/* Вкладки */
+#tabs-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 11px;
+  height: 26px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.general_menu__tabs {
+  display: flex;
+  list-style: none;
+  padding: 1px 0 2px;
+  position: relative;
+  z-index: 100;
+}
+
+.general_menu__tabs li {
+  position: relative;
+  margin-right: 2px;
+}
+
+.general_menu__tabs li a {
+  background: #f3f3f3;
+  border-bottom: none;
+  color: #333;
+  display: block;
+  padding: 6px 10px 4px;
+  text-decoration: none;
+}
+
+.general_menu__tabs li button {
+  padding: 6px 10px 4px;
+  text-decoration: none;
+}
+
+.general_menu__tabs li:first-child a,
+.general_menu__tabs li:first-child button {
+  margin-left: 10px;
+}
+
+.general_menu__tabs li.active {
+  border: 1px solid #d5d5d5;
+  border-bottom: 1px solid #fff;
+  border-radius: 4px 4px 0 0;
+  color: #222;
+}
+
+.general_menu__tabs li.child a {
+  border-radius: 0 4px 0 0;
+}
+
+.general_menu__tabs li a:hover,
+.general_menu__tabs > li > a:hover {
+  background: #fafafa;
+  color: #222;
+}
+
+.general_menu__tabs > li.active > a:hover {
+  background: #fff;
+  border-bottom: 1px solid #fff;
+  color: #222;
+}
+
+/* Навігаційне меню */
+.general_menu__nav {
+  display: block;
+  margin: 0;
+  padding: 5px 0 2px;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+}
+
+.general_menu__nav__row {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0 10px;
+}
+
+.general_menu__nav__column {
+  flex: 25%;
+  max-width: 25%;
+  height: 7rem;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+}
+
+.general_menu__nav__column img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.general_menu__nav li {
+  float: left;
+  list-style: none;
+  position: relative;
+}
+
+.general_menu__nav li a,
+.general_menu__nav li button {
+  border: none;
+  color: #222;
+  display: block;
+  margin: 0 5px 0 0;
+  padding: 5px 20px 5px 8px;
+}
+
+.general_menu__nav > li > a:hover {
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  color: #fff;
+  padding: 5px 20px 5px 8px;
+}
+
+.general_menu__nav li ul {
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-box-shadow: 1px 1px 1px #333;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-box-shadow: 1px 1px 1px #333;
+  background: #507aa5;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  box-shadow: 1px 1px 1px #333;
+  color: #222;
+  margin: 0;
+  padding: 2px 0;
+  position: absolute;
+  width: 140px;
+}
+
+.general_menu__nav li ul li {
+  width: 100%;
+}
+
+.general_menu__nav li ul li a {
+  background: #507aa5;
+  border: none;
+  color: #fff;
+  line-height: 25px;
+  margin: 0;
+  padding: 0 0 0 8px;
+}
+
+.general_menu__nav li ul li a:hover {
+  background: #466a90;
+}
+
+.general_menu__nav li ul li.strong-archive a {
+  border-top: 1px solid #466a90;
+  font-weight: 600;
+}
+
+.general_menu__nav li.current > a {
+  -moz-border-radius: 3px 3px 0 0;
+  -moz-box-shadow: 1px 1px 1px #333;
+  -webkit-border-radius: 3px 3px 0 0;
+  -webkit-box-shadow: 1px 1px 1px #333;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 1px 1px 1px #333;
+  color: #fff;
+}
+
+.general_menu__nav li:hover > ul.child {
+  display: block;
+}
+
+/* Контейнер навігації */
+#nav-container {
+  border-bottom: 1px solid #d5d5d5;
+  border-top: 1px solid #d5d5d5;
+  clear: both;
+  font-size: 11px;
+  height: var(--nav-container-height);
+  margin: 0 auto;
+  padding: 0 !important;
+  min-height: auto !important;
+}
+
+/* General Menu */
+.general_menu {
+  min-height: auto !important;
+}
+
+/* Breadcrumb */
+ul.breadcrumb {
+  padding: 3px 16px;
+  list-style: none;
+  background-color: #eee;
+}
+
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+
+/* Submenu column */
+.submenu_col {
+  display: none;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  box-sizing: border-box;
+  width: 20rem;
+  max-height: 20rem;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 120;
+  border: inset 3px;
+}
+
+.but_submenu.active {
+  color: #888;
+}
+
+.sub-column {
+  flex-grow: 1;
+  text-align: center;
+  padding: 10px;
+  height: 6rem;
+}
+
+.sub-column:last-child {
+  border-bottom: none;
+}
+
+/* Каруселька */
+.carus {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #a4a5ac #e0e0e0;
+}
+
+.carus::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carus::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+.carus::-webkit-scrollbar-thumb {
+  background-color: #f0e5e5;
+  border-radius: 4px;
+}
+
+.carus__col {
+  display: flex;
+  flex: 0 0 auto;
+  width: 4rem;
+  height: 4rem;
+  margin: 5px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+  position: relative;
+  cursor: all-scroll;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease 0s;
+  transition-property: box-shadow, color;
+}
+
+.carus__col img {
+  max-width: 100%;
+  max-height: 100%;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+/* Layout */
+main {
+  width: 100%;
+  height: 100%;
+}
+
+.footer {
+  z-index: 13;
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+}
+
+/* Card grid */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.card-item {
+  flex: 0 1 calc(33% - 16px);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+/* Responsive heights */
+.responsive-div {
+  height: 70vh;
+}
+
+@media (min-width: 768px) {
+  .responsive-div {
+    height: 75vh;
+  }
+}
+
+@media (min-width: 992px) {
+  .responsive-div {
+    height: 80vh;
+  }
+}
+
+/* Горизонтальний скролинг для меню */
+.bg-gray-100.overflow-x-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.bg-gray-100.overflow-x-auto::-webkit-scrollbar {
+  height: 6px;
+}
+
+.bg-gray-100.overflow-x-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bg-gray-100.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.bg-gray-100.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Компактні стилі для tools */
+.tools-compact button {
+  padding: 2px 4px !important;
+  font-size: 10px !important;
+  min-width: auto !important;
+  height: 24px !important;
+  border-radius: 3px !important;
+}
+
+.tools-compact .MuiButton-root {
+  min-width: auto !important;
+  padding: 2px 4px !important;
+  font-size: 10px !important;
+}
+
+/* Zoom компактні стилі */
+.zoom-compact button {
+  padding: 2px 6px !important;
+  font-size: 10px !important;
+  min-width: auto !important;
+  height: 24px !important;
+  border-radius: 3px !important;
+}
+
+.zoom-compact input {
+  width: 40px !important;
+  padding: 2px 4px !important;
+  font-size: 10px !important;
+  height: 24px !important;
+  border-radius: 3px !important;
+}
+
+.zoom-compact span {
+  font-size: 10px !important;
+}
+
+.zoom-compact .MuiButton-root {
+  min-width: auto !important;
+  padding: 2px 6px !important;
+  font-size: 10px !important;
+}
+
+/* Забороняємо перенос рядків в меню */
+.min-w-max {
+  white-space: nowrap;
+}
+
+/* Мобільна адаптивність */
+@media (max-width: 768px) {
+  .bg-gray-100.overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  .flex-shrink-0 button {
+    min-height: 32px;
+    padding: 4px 8px;
+  }
+  
+  .footer {
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+  }
+  
+  .footer button {
+    padding: 2px 4px !important;
+    font-size: 10px !important;
+  }
+  
+  .gjs-custom-editor-canvas {
+    height: calc(100vh - 120px) !important;
+  }
+}
+
+/* Для дуже маленьких екранів */
+@media (max-width: 480px) {
+  .bg-gray-100.overflow-x-auto {
+    padding: 8px;
+  }
+  
+  .flex.items-center.gap-4 {
+    gap: 12px;
+  }
+  
+  .text-xs.font-medium.text-gray-600 {
+    display: none;
+  }
+}

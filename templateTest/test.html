@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-build-classic@latest/build/ckeditor.js"></script>
+    <script src="./data/moderndom-ckeditor-plugin.js"></script>
+  </head>
+  <body></body>
+</html>
+<header data-header="header" class="header-block bg-slate-900"> 
+  <div class="flex justify-center" data-element="header-container">
+    <nav
+      class="self-center w-full max-w-7xl nav-block"
+      data-element="navigation"
+    >
+      <div class="flex flex-col lg:flex-row justify-around items-center">
+        <div data-element="logo" class="flex items-center">
+          <div
+            class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-cyan-500 mr-3"
+          ></div>
+          <h1
+            class="uppercase pl-5 py-4 text-lg font-sans font-bold text-gray-900"
+            data-header-logo="logo"
+          >
+            hero
+          </h1>
+        </div>
+
+        <ul
+          class="hidden lg:flex items-center text-[18px] font-semibold pl-32"
+          data-header-menuitems="menuitems"
+        >
+          <li
+            data-header-menuitems-item="item"
+            class="hover:underline underline-offset-4 decoration-2 decoration-white py-2 rounded-lg px-5"
+          >
+            <a href="#" class="text-gray-900">Home</a>
+          </li>
+          <li
+            data-header-menuitems-item="item"
+            class="hover:underline underline-offset-4 decoration-2 decoration-white py-2 rounded-lg px-5"
+          >
+            <a href="#" class="text-gray-900">Contact</a>
+          </li>
+          <li data-header-menuitems-item="item" class="dropdown relative">
+            <button
+              id="servicesDropdown"
+              class="dropdown-toggle hover:underline underline-offset-4 decoration-2 decoration-white py-2 rounded-lg px-5"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Services
+            </button>
+            <div
+              data-toggle-id="servicesDropdown"
+              class="dropdown-menu hidden absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2"
+              aria-labelledby="servicesDropdown"
+            >
+              <a
+                href="#"
+                class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >Service 1</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >Service 2</a
+              >
+            </div>
+          </li>
+          <li
+            data-header-menuitems-item="item"
+            class="hover:underline underline-offset-4 decoration-2 decoration-white py-2 rounded-lg px-5"
+          >
+            <a href="#">About</a>
+          </li>
+          <li
+            data-header-menuitems-item="item"
+            class="hover:underline underline-offset-4 decoration-2 decoration-white py-2 rounded-lg px-5"
+          >
+            <a href="#">Pricing</a>
+          </li>
+        </ul>
+
+        <a
+          href="#"
+          data-header-cta="cta"
+          class="button-gradient bg-blue-600 text-gray-400 px-4 py-2 rounded-lg hover:bg-blue-700"
+        >
+          Try Now
+        </a>
+
+        <div
+          class="text-center text-base pr-5 inline-flex text-gray-900"
+          data-element="social-icons"
+        >
+          <a
+            href="#"
+            class="w-8 h-8 inline-block rounded-full pt-[6px] hover:text-blue-500"
+          >
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a
+            href="#"
+            class="w-8 h-8 inline-block rounded-full pt-[5px] hover:text-blue-500"
+          >
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a
+            href="#"
+            class="w-8 h-8 inline-block rounded-full pt-[5px] hover:text-blue-500"
+          >
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a
+            href="#"
+            class="w-8 h-8 inline-block rounded-full pt-[5px] hover:text-blue-500"
+          >
+            <i class="fa fa-google"></i>
+          </a>
+          <a
+            href="#"
+            class="w-8 h-8 inline-block rounded-full pt-[5px] hover:text-blue-500"
+          >
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </div>
+
+        <button
+          class="lg:hidden text-white p-2"
+          id="mobileMenuBtn"
+          aria-label="Menu"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobileMenu" style="display: none">
+        <div class="px-2 pt-2 pb-3 space-y-1 text-white">
+          <a href="#" class="block px-3 py-2 hover:text-blue-400">Home</a>
+          <a href="#" class="block px-3 py-2 hover:text-blue-400">Contact</a>
+          <div class="mobile-dropdown">
+            <button
+              class="dropdown-toggle w-full text-left px-3 py-2 hover:text-blue-400"
+            >
+              Services
+            </button>
+            <div class="dropdown-menu pl-6" style="display: none">
+              <a href="#" class="block py-2 hover:text-blue-400">Service 1</a>
+              <a href="#" class="block py-2 hover:text-blue-400">Service 2</a>
+            </div>
+          </div>
+          <a href="#" class="block px-3 py-2 hover:text-blue-400">About</a>
+          <a
+            href="#"
+            data-header-cta="cta-mobile"
+            class="block px-3 py-2 bg-blue-600 rounded hover:bg-blue-700"
+            >Try Now</a
+          >
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div
+    class="header-block flex justify-center py-10"
+    data-element="hero-section"
+  >
+    <div class="flex flex-col justify-center">
+      <div
+        class="flex flex-col max-w-7xl justify-center items-center p-2 mt-10"
+      >
+        <div
+          class="flex flex-col w-[90%] md:w-3/4 text-center items-center justify-center space-y-3"
+        >
+          <div
+            class="text-5xl font-bold text-gray-400"
+            data-header-title="main-title"
+          >
+            Clean Green Crypto Energy for Crypto Mining
+          </div>
+          <div
+            class="text-xl font-semibold text-gray-400"
+            data-header-subtitle="main-subtitle"
+          >
+            Help save the planet with KWATT tokenized electricity
+          </div>
+          <div class="md:text-lg" data-element="subscribe-form">
+            <input
+              class="bg-gray-200/70 border drop-shadow-sm shadow-gray-700 rounded-2xl placeholder-slate-400 px-4 py-1 focus:outline-none"
+              type="email"
+              placeholder="E-mail Address"
+              data-element="email-input"
+            />
+            <button
+              class="p-1 m-2 rounded-2xl text-gray-400 bg-blue-500 px-4 font-semibold hover:bg-blue-900 hover:transform ease-in-out duration-300"
+              data-element="subscribe-button"
+            >
+              Subscribe
+            </button>
+          </div>
+        </div>
+        <div
+          class="w-3/4 h-60 md:h-96 my-4 rounded-lg overflow-hidden"
+          data-header-image-container="container"
+        >
+          <img
+            data-header-image="image"
+            src="https://source.unsplash.com/500x400/?cryptocurrency,electricity"
+            class="h-full w-full"
+            alt="Cryptocurrency and electricity illustration"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="data/script.js"></script>
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.style.display === 'none';
+        mobileMenu.style.display = isHidden ? 'block' : 'none';
+    });
+    
+   /*  $("#mobileMenuBtn").click(() => {
+      $("#mobileMenu").toggle();
+      
+    });
+
+    $(".dropdown-toggle").click(function () {
+      $(this).next(".dropdown-menu").toggle();
+    }); */
+  </script>
+</header>

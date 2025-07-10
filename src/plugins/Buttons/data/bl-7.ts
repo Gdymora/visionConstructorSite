@@ -1,0 +1,1 @@
+export const source = `<a href="#" class="flex text-blue-600 bg-blue-200 rounded-2xl px-2 m-2 font-medium hover:text-blue-200 hover:bg-blue-600"> <ion-icon name="folder-outline" class="m-1 text-xl"></ion-icon> <div>Archive</div> </a>`;

@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- 1. Minimal Responsive Header -->
+    <header class="bg-white shadow-sm">
+      <nav class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <a href="#" class="text-xl font-bold">Brand</a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition-colors"
+              >Home</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition-colors"
+              >Products</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 transition-colors"
+              >About</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            class="md:hidden"
+            onclick="document.getElementById('mobile-menu-1').classList.toggle('hidden')"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu-1" class="hidden md:hidden py-4 space-y-2">
+          <a href="#" class="block text-gray-600 hover:text-blue-600 py-2"
+            >Home</a
+          >
+          <a href="#" class="block text-gray-600 hover:text-blue-600 py-2"
+            >Products</a
+          >
+          <a href="#" class="block text-gray-600 hover:text-blue-600 py-2"
+            >About</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <!-- 2. E-commerce Responsive Header -->
+    <header class="bg-white border-b">
+      <div class="max-w-7xl mx-auto p-4">
+        <!-- Top Bar -->
+        <div
+          class="flex flex-col md:flex-row justify-between items-center mb-4 space-y-4 md:space-y-0"
+        >
+          <a href="#" class="text-2xl font-bold">Shop</a>
+
+          <!-- Search -->
+          <div class="w-full md:w-auto">
+            <input
+              type="search"
+              placeholder="Search products..."
+              class="w-full md:w-64 px-4 py-2 border rounded-lg"
+            />
+          </div>
+
+          <!-- Cart -->
+          <div class="flex items-center space-x-6">
+            <a href="#" class="relative">
+              <span
+                class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs"
+                >3</span
+              >
+              Cart
+            </a>
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="#" class="text-gray-600 hover:text-blue-600">Electronics</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600">Fashion</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600">Home</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600">Beauty</a>
+        </nav>
+
+        <!-- Mobile Categories -->
+        <button
+          class="md:hidden w-full text-left py-2"
+          onclick="document.getElementById('mobile-categories').classList.toggle('hidden')"
+        >
+          Categories ▼
+        </button>
+        <div id="mobile-categories" class="hidden md:hidden py-2 space-y-2">
+          <a href="#" class="block py-2">Electronics</a>
+          <a href="#" class="block py-2">Fashion</a>
+          <a href="#" class="block py-2">Home</a>
+          <a href="#" class="block py-2">Beauty</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Continue with headers 3-12 following similar responsive patterns -->
+    <!-- Each header should have:
+       - Mobile menu toggle
+       - Hidden mobile menu that shows/hides
+       - Proper stacking on mobile
+       - Search/input responsiveness
+       - Proper spacing adjustments
+       - Touch-friendly tap targets -->
+
+    <!-- Example of JavaScript for handling mobile menus -->
+    <script>
+      document.querySelectorAll('[id^="mobile-menu-"]').forEach((menu) => {
+        const id = menu.id;
+        const button = document.querySelector(`button[onclick*="${id}"]`);
+
+        // Close menu when clicking outside
+        document.addEventListener("click", (e) => {
+          if (!menu.contains(e.target) && !button.contains(e.target)) {
+            menu.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+
+   <!-- 3. Dark Mode Header -->
+<header class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <nav>
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-12">
+            <h1 class="text-xl font-bold">Dark UI</h1>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+              <a href="#" class="hover:text-blue-400">Dashboard</a>
+              <a href="#" class="hover:text-blue-400">Analytics</a>
+              <a href="#" class="hover:text-blue-400">Settings</a>
+            </div>
+          </div>
+          <!-- Auth Button -->
+          <div class="flex items-center space-x-4">
+            <button class="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 hidden md:block">
+              Sign In
+            </button>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden" onclick="document.getElementById('dark-mobile-menu').classList.toggle('hidden')">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="dark-mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+          <a href="#" class="block py-2 hover:text-blue-400">Dashboard</a>
+          <a href="#" class="block py-2 hover:text-blue-400">Analytics</a>
+          <a href="#" class="block py-2 hover:text-blue-400">Settings</a>
+          <button class="w-full bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 mt-4">
+            Sign In
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- 4. Two-Level Responsive Header -->
+  <header class="bg-white">
+    <!-- Top Bar -->
+    <div class="bg-gray-100 py-2">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+          <div>USD</div>
+          <div class="flex flex-wrap justify-center md:justify-end space-x-4">
+            <a href="#" class="text-sm">Help</a>
+            <a href="#" class="text-sm">Track Order</a>
+            <a href="#" class="text-sm">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Navigation -->
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <nav>
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold">LOGO</h1>
+          
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#">Women</a>
+            <a href="#">Men</a>
+            <a href="#">Kids</a>
+            <a href="#">Sale</a>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden" onclick="document.getElementById('two-level-mobile').classList.toggle('hidden')">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="two-level-mobile" class="hidden md:hidden mt-4 space-y-2">
+          <a href="#" class="block py-2">Women</a>
+          <a href="#" class="block py-2">Men</a>
+          <a href="#" class="block py-2">Kids</a>
+          <a href="#" class="block py-2">Sale</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- 5. News Portal Header -->
+  <header class="bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Top Section -->
+      <div class="flex justify-between items-center py-4 border-b">
+        <button class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <div class="text-3xl font-serif font-bold text-center flex-1 md:text-left">
+          The News
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+          <button class="bg-blue-600 text-white px-4 py-2 rounded">Subscribe</button>
+          <button class="text-gray-600">Sign In</button>
+        </div>
+      </div>
+      
+      <!-- Categories -->
+      <nav class="py-2 overflow-x-auto">
+        <div class="flex space-x-6 md:justify-center min-w-max">
+          <a href="#" class="text-gray-600 hover:text-blue-600 whitespace-nowrap">Breaking News</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600 whitespace-nowrap">Politics</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600 whitespace-nowrap">Technology</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600 whitespace-nowrap">Business</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600 whitespace-nowrap">Entertainment</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600 whitespace-nowrap">Sports</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- 6. Portfolio Header -->
+  <header class="bg-white shadow-sm">
+    <nav class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="#" class="text-xl font-light tracking-wider">JOHN DOE</a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#" class="text-gray-600 hover:text-black">Projects</a>
+          <a href="#" class="text-gray-600 hover:text-black">About</a>
+          <a href="#" class="text-gray-600 hover:text-black">Contact</a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden" onclick="document.getElementById('portfolio-mobile').classList.toggle('hidden')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="portfolio-mobile" class="hidden md:hidden pb-4">
+        <a href="#" class="block py-2 text-gray-600 hover:text-black">Projects</a>
+        <a href="#" class="block py-2 text-gray-600 hover:text-black">About</a>
+        <a href="#" class="block py-2 text-gray-600 hover:text-black">Contact</a>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- 7. App Dashboard Header -->
+  <header class="bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <!-- Left Section -->
+        <div class="flex items-center space-x-4">
+          <button class="md:hidden">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+          <span class="text-xl font-semibold">Dashboard</span>
+        </div>
+        
+        <!-- Search - Desktop -->
+        <div class="hidden md:block flex-1 max-w-xl px-4">
+          <div class="relative">
+            <input type="search" 
+                   placeholder="Search..." 
+                   class="w-full px-4 py-2 rounded-lg bg-gray-100 focus:outline-none focus:ring-2">
+            <svg class="w-5 h-5 absolute right-3 top-2.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
+        
+        <!-- Right Section -->
+        <div class="flex items-center space-x-4">
+          <button class="relative">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            </svg>
+            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+              3
+            </span>
+          </button>
+          <button class="w-8 h-8 rounded-full bg-gray-200"></button>
+        </div>
+      </div>
+      
+      <!-- Search - Mobile -->
+      <div class="md:hidden py-4">
+        <input type="search" 
+               placeholder="Search..." 
+               class="w-full px-4 py-2 rounded-lg bg-gray-100 focus:outline-none focus:ring-2">
+      </div>
+    </div>
+  </header>
+  
+  <!-- 8. Marketing Landing Header -->
+  <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+    <nav class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="#" class="text-2xl font-bold">Brand</a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#" class="hover:text-purple-200">Features</a>
+          <a href="#" class="hover:text-purple-200">Pricing</a>
+          <a href="#" class="hover:text-purple-200">About</a>
+          <button class="bg-white text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-100">
+            Get Started
+          </button>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden" onclick="document.getElementById('marketing-mobile').classList.toggle('hidden')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu -->
+      <div id="marketing-mobile" class="hidden md:hidden pb-6">
+        <div class="space-y-3">
+          <a href="#" class="block py-2 hover:text-purple-200">Features</a>
+          <a href="#" class="block py-2 hover:text-purple-200">Pricing</a>
+          <a href="#" class="block py-2 hover:text-purple-200">About</a>
+          <button class="w-full bg-white text-purple-600 px-4 py-2 rounded-lg hover:bg-purple-100">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+   <!-- 9. Social Media Header (continued) -->
+   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+  </svg>
+</a>
+<a href="#" class="p-2 hover:bg-gray-100 rounded-full">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+  </svg>
+</a>
+<a href="#" class="p-2 hover:bg-gray-100 rounded-full">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+  </svg>
+</a>
+<button class="w-8 h-8 rounded-full bg-gray-200"></button>
+</nav>
+
+<!-- Mobile Menu Button -->
+<button class="md:hidden" onclick="document.getElementById('social-mobile').classList.toggle('hidden')">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+</svg>
+</button>
+</div>
+
+<!-- Mobile Search and Menu -->
+<div id="social-mobile" class="md:hidden py-4 space-y-4">
+<input type="search" 
+     placeholder="Search..." 
+     class="w-full px-4 py-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2">
+<nav class="flex justify-around">
+<a href="#" class="p-2 hover:bg-gray-100 rounded-full">Home</a>
+<a href="#" class="p-2 hover:bg-gray-100 rounded-full">Messages</a>
+<a href="#" class="p-2 hover:bg-gray-100 rounded-full">Notifications</a>
+</nav>
+</div>
+</div>
+</header>
+
+<!-- 10. Magazine Style Header -->
+<header class="bg-white">
+<div class="max-w-6xl mx-auto px-4 py-8">
+<!-- Top Section -->
+<div class="text-center mb-8">
+<h1 class="text-4xl md:text-5xl font-serif font-bold">The Magazine</h1>
+</div>
+
+<!-- Navigation -->
+<nav>
+<!-- Desktop Menu -->
+<div class="hidden md:flex justify-center space-x-12">
+<a href="#" class="text-gray-600 hover:text-black">Fashion</a>
+<a href="#" class="text-gray-600 hover:text-black">Travel</a>
+<a href="#" class="text-gray-600 hover:text-black">Culture</a>
+<a href="#" class="text-gray-600 hover:text-black">Style</a>
+<a href="#" class="text-gray-600 hover:text-black">Food</a>
+</div>
+
+<!-- Mobile Menu Button -->
+<button class="md:hidden w-full text-left" 
+      onclick="document.getElementById('magazine-mobile').classList.toggle('hidden')">
+<div class="flex justify-between items-center">
+  <span>Menu</span>
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+  </svg>
+</div>
+</button>
+
+<!-- Mobile Menu -->
+<div id="magazine-mobile" class="hidden md:hidden mt-4 space-y-2">
+<a href="#" class="block py-2 text-gray-600 hover:text-black">Fashion</a>
+<a href="#" class="block py-2 text-gray-600 hover:text-black">Travel</a>
+<a href="#" class="block py-2 text-gray-600 hover:text-black">Culture</a>
+<a href="#" class="block py-2 text-gray-600 hover:text-black">Style</a>
+<a href="#" class="block py-2 text-gray-600 hover:text-black">Food</a>
+</div>
+</nav>
+</div>
+</header>
+
+<!-- 11. Documentation Header -->
+<header class="bg-white border-b sticky top-0">
+<div class="max-w-7xl mx-auto px-4">
+<nav class="flex items-center justify-between h-16">
+<!-- Left Section -->
+<div class="flex items-center space-x-8">
+<a href="#" class="text-xl font-semibold">Docs</a>
+<!-- Desktop Search -->
+<div class="hidden md:block">
+  <input type="search" 
+         placeholder="Search documentation..." 
+         class="w-64 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2">
+</div>
+</div>
+
+<!-- Desktop Menu -->
+<div class="hidden md:flex items-center space-x-8">
+<a href="#" class="text-gray-600 hover:text-blue-600">Guide</a>
+<a href="#" class="text-gray-600 hover:text-blue-600">API</a>
+<a href="#" class="text-gray-600 hover:text-blue-600">Examples</a>
+<a href="#" class="text-gray-600 hover:text-blue-600">GitHub</a>
+<button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+  Download
+</button>
+</div>
+
+<!-- Mobile Menu Button -->
+<button class="md:hidden" onclick="document.getElementById('docs-mobile').classList.toggle('hidden')">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+</svg>
+</button>
+</nav>
+
+<!-- Mobile Menu & Search -->
+<div id="docs-mobile" class="hidden md:hidden pb-6">
+<input type="search" 
+     placeholder="Search documentation..." 
+     class="w-full px-4 py-2 border rounded-lg mb-4">
+<div class="space-y-2">
+<a href="#" class="block py-2 text-gray-600 hover:text-blue-600">Guide</a>
+<a href="#" class="block py-2 text-gray-600 hover:text-blue-600">API</a>
+<a href="#" class="block py-2 text-gray-600 hover:text-blue-600">Examples</a>
+<a href="#" class="block py-2 text-gray-600 hover:text-blue-600">GitHub</a>
+<button class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+  Download
+</button>
+</div>
+</div>
+</div>
+</header>
+
+<!-- 12. Blog Header -->
+<header class="bg-white">
+<div class="max-w-4xl mx-auto px-4 py-12">
+<!-- Logo/Title -->
+<div class="text-center mb-8">
+<a href="#" class="text-3xl md:text-4xl font-serif">The Blog</a>
+</div>
+
+<!-- Navigation -->
+<nav>
+<!-- Desktop Menu -->
+<div class="hidden md:flex justify-center space-x-8 text-sm tracking-wider">
+<a href="#" class="text-gray-600 hover:text-black uppercase">Home</a>
+<a href="#" class="text-gray-600 hover:text-black uppercase">Articles</a>
+<a href="#" class="text-gray-600 hover:text-black uppercase">About</a>
+<a href="#" class="text-gray-600 hover:text-black uppercase">Contact</a>
+</div>
+
+<!-- Mobile Menu Button -->
+<button class="md:hidden w-full" 
+      onclick="document.getElementById('blog-mobile').classList.toggle('hidden')">
+<div class="flex justify-center items-center space-x-2">
+  <span>Menu</span>
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+  </svg>
+</div>
+</button>
+
+<!-- Mobile Menu -->
+<div id="blog-mobile" class="hidden md:hidden mt-4">
+<div class="flex flex-col items-center space-y-4 text-sm tracking-wider">
+  <a href="#" class="text-gray-600 hover:text-black uppercase">Home</a>
+  <a href="#" class="text-gray-600 hover:text-black uppercase">Articles</a>
+  <a href="#" class="text-gray-600 hover:text-black uppercase">About</a>
+  <a href="#" class="text-gray-600 hover:text-black uppercase">Contact</a>
+</div>
+</div>
+</nav>
+</div>
+</header>
+
+<!-- JavaScript for All Headers -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+// Handle mobile menu toggles
+const mobileMenus = document.querySelectorAll('[id$="-mobile"]');
+const menuButtons = document.querySelectorAll('button[onclick]');
+
+// Close any open mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+mobileMenus.forEach((menu, index) => {
+if (!menu.contains(e.target) && !menuButtons[index].contains(e.target)) {
+menu.classList.add('hidden');
+}
+});
+});
+
+// Optional: Add scroll behavior for sticky headers
+const stickyHeaders = document.querySelectorAll('.sticky');
+if (stickyHeaders.length > 0) {
+window.addEventListener('scroll', () => {
+stickyHeaders.forEach(header => {
+if (window.scrollY > 0) {
+  header.classList.add('shadow-sm');
+} else {
+  header.classList.remove('shadow-sm');
+}
+});
+});
+}
+});
+</script>
+
+<!-- 13. Social Platform Header -->
+<header class="bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-14">
+        <div class="flex items-center space-x-4">
+          <span class="text-xl font-bold text-blue-500">Social</span>
+          <input type="search" placeholder="Search..." class="hidden md:block bg-gray-100 px-4 py-1 rounded-full">
+        </div>
+        <nav class="hidden md:flex items-center space-x-6">
+          <a href="#" class="text-gray-600 hover:text-blue-500">Home</a>
+          <a href="#" class="text-gray-600 hover:text-blue-500">Network</a>
+          <a href="#" class="text-gray-600 hover:text-blue-500">Messages</a>
+          <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+        </nav>
+        <button class="md:hidden" onclick="document.getElementById('social-platform-mobile').classList.toggle('hidden')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      <div id="social-platform-mobile" class="hidden md:hidden py-4">
+        <input type="search" placeholder="Search..." class="w-full bg-gray-100 px-4 py-2 rounded-full mb-4">
+        <nav class="space-y-4">
+          <a href="#" class="block text-gray-600 hover:text-blue-500">Home</a>
+          <a href="#" class="block text-gray-600 hover:text-blue-500">Network</a>
+          <a href="#" class="block text-gray-600 hover:text-blue-500">Messages</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <!-- 14. Documentation Header -->
+  <header class="bg-white border-b">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-12">
+          <span class="text-xl font-semibold">Docs</span>
+          <input type="search" placeholder="Search documentation..." class="hidden md:block w-64 px-4 py-2 border rounded-lg">
+        </div>
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#" class="text-gray-600 hover:text-blue-600">Guide</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600">API</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600">Examples</a>
+          <button class="text-gray-600 hover:text-blue-600">GitHub</button>
+        </nav>
+        <button class="md:hidden" onclick="document.getElementById('docs-mobile-menu').classList.toggle('hidden')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      <div id="docs-mobile-menu" class="hidden md:hidden mt-4">
+        <input type="search" placeholder="Search documentation..." class="w-full px-4 py-2 border rounded-lg mb-4">
+        <nav class="space-y-4">
+          <a href="#" class="block text-gray-600 hover:text-blue-600">Guide</a>
+          <a href="#" class="block text-gray-600 hover:text-blue-600">API</a>
+          <a href="#" class="block text-gray-600 hover:text-blue-600">Examples</a>
+          <a href="#" class="block text-gray-600 hover:text-blue-600">GitHub</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <!-- 15. Agency Header -->
+  <header class="bg-black text-white">
+    <div class="max-w-7xl mx-auto px-8 py-6">
+      <nav class="flex justify-between items-center">
+        <span class="text-2xl font-bold">AGENCY</span>
+        <div class="hidden md:flex items-center space-x-12">
+          <a href="#" class="hover:text-yellow-400">Work</a>
+          <a href="#" class="hover:text-yellow-400">Services</a>
+          <a href="#" class="hover:text-yellow-400">Culture</a>
+          <button class="border px-6 py-2 hover:bg-white hover:text-black transition-colors">
+            Contact
+          </button>
+        </div>
+        <button class="md:hidden" onclick="document.getElementById('agency-mobile').classList.toggle('hidden')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </nav>
+      <div id="agency-mobile" class="hidden md:hidden mt-8 space-y-6">
+        <a href="#" class="block hover:text-yellow-400">Work</a>
+        <a href="#" class="block hover:text-yellow-400">Services</a>
+        <a href="#" class="block hover:text-yellow-400">Culture</a>
+        <button class="w-full border px-6 py-2 hover:bg-white hover:text-black transition-colors">
+          Contact
+        </button>
+      </div>
+    </div>
+  </header>
+    </header>
+
+    <!-- 1. Fullscreen Hero Header -->
+    <header class="relative h-screen">
+      <!-- Video Background -->
+      <div class="absolute inset-0 z-0">
+        <video autoplay loop muted class="w-full h-full object-cover">
+          <source src="video.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 bg-black/50"></div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="relative z-10 container mx-auto px-4">
+        <div class="flex items-center justify-between py-6">
+          <a href="#" class="text-2xl font-bold text-white">LOGO</a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden lg:flex items-center space-x-8">
+            <a href="#" class="text-white hover:text-yellow-400 transition-all"
+              >Home</a
+            >
+            <a href="#" class="text-white hover:text-yellow-400 transition-all"
+              >Services</a
+            >
+            <a href="#" class="text-white hover:text-yellow-400 transition-all"
+              >Portfolio</a
+            >
+            <button
+              class="bg-white text-black px-6 py-2 rounded-full hover:bg-yellow-400 transition-all"
+            >
+              Get Started
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="lg:hidden text-white">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Hero Content -->
+      <div
+        class="relative z-10 flex items-center justify-center h-full text-center px-4"
+      >
+        <div>
+          <h1
+            class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
+          >
+            Create Your Future
+          </h1>
+          <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+            Innovative solutions for modern businesses
+          </p>
+          <button
+            class="bg-yellow-400 text-black px-8 py-3 rounded-full text-lg font-medium hover:bg-yellow-300 transition-all"
+          >
+            Explore Now
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. Mega Menu Header -->
+    <header class="bg-white shadow-lg">
+      <div class="container mx-auto px-4">
+        <!-- Top Bar -->
+        <div class="hidden lg:flex justify-between py-2 border-b text-sm">
+          <div class="flex items-center space-x-4">
+            <a href="#" class="text-gray-600 hover:text-blue-600"
+              >Find a Store</a
+            >
+            <a href="#" class="text-gray-600 hover:text-blue-600">Contact</a>
+          </div>
+          <div class="flex items-center space-x-4">
+            <a href="#" class="text-gray-600 hover:text-blue-600">Sign In</a>
+            <span class="text-gray-300">|</span>
+            <a href="#" class="text-gray-600 hover:text-blue-600">Register</a>
+          </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="py-4">
+          <div class="flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold">BRAND</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-8">
+              <div class="relative group">
+                <button
+                  class="flex items-center text-gray-700 hover:text-blue-600"
+                >
+                  Products
+                  <svg
+                    class="w-4 h-4 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <!-- Mega Menu -->
+                <div
+                  class="absolute left-0 w-screen max-w-6xl p-6 mt-5 bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 -translate-x-1/4"
+                >
+                  <div class="grid grid-cols-4 gap-8">
+                    <div>
+                      <h3 class="text-lg font-semibold mb-4">Category 1</h3>
+                      <ul class="space-y-2">
+                        <li>
+                          <a href="#" class="text-gray-600 hover:text-blue-600"
+                            >Product 1</a
+                          >
+                        </li>
+                        <li>
+                          <a href="#" class="text-gray-600 hover:text-blue-600"
+                            >Product 2</a
+                          >
+                        </li>
+                        <li>
+                          <a href="#" class="text-gray-600 hover:text-blue-600"
+                            >Product 3</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- Repeat for other categories -->
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="text-gray-700 hover:text-blue-600"
+                >Solutions</a
+              >
+              <a href="#" class="text-gray-700 hover:text-blue-600"
+                >Resources</a
+              >
+              <button
+                class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+              >
+                Try Free
+              </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 3. Split Content Header -->
+    <header class="min-h-screen bg-gradient-to-br from-purple-900 to-blue-900">
+      <nav class="container mx-auto px-4 py-6">
+        <div class="flex justify-between items-center">
+          <a href="#" class="text-2xl font-bold text-white">LOGO</a>
+          <div class="hidden md:flex items-center space-x-6">
+            <a href="#" class="text-gray-300 hover:text-white">About</a>
+            <a href="#" class="text-gray-300 hover:text-white">Features</a>
+            <a href="#" class="text-gray-300 hover:text-white">Pricing</a>
+            <button
+              class="bg-white text-purple-900 px-6 py-2 rounded-full hover:bg-purple-100"
+            >
+              Get Started
+            </button>
+          </div>
+          <button class="md:hidden text-white">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <div class="container mx-auto px-4 py-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+              Transform Your Business
+            </h1>
+            <p class="text-xl text-gray-300 mb-8">
+              Powerful solutions for modern enterprises
+            </p>
+            <div class="flex space-x-4">
+              <button
+                class="bg-white text-purple-900 px-8 py-3 rounded-full hover:bg-purple-100"
+              >
+                Get Started
+              </button>
+              <button
+                class="border border-white text-white px-8 py-3 rounded-full hover:bg-white/10"
+              >
+                Learn More
+              </button>
+            </div>
+          </div>
+          <div class="relative">
+            <!-- Placeholder for illustration/image -->
+            <div class="aspect-video bg-white/10 rounded-2xl"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 4. Sticky Animated Header -->
+    <header class="fixed w-full transition-all duration-300" id="sticky-header">
+      <div class="bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+          <nav class="flex items-center justify-between h-20">
+            <a href="#" class="text-2xl font-bold">LOGO</a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-8">
+              <a
+                href="#"
+                class="text-gray-700 hover:text-blue-600 transition-colors"
+                >Home</a
+              >
+              <a
+                href="#"
+                class="text-gray-700 hover:text-blue-600 transition-colors"
+                >Features</a
+              >
+              <a
+                href="#"
+                class="text-gray-700 hover:text-blue-600 transition-colors"
+                >Pricing</a
+              >
+              <a
+                href="#"
+                class="text-gray-700 hover:text-blue-600 transition-colors"
+                >About</a
+              >
+              <button
+                class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+              >
+                Sign Up
+              </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Panel -->
+      <div class="lg:hidden">
+        <div class="bg-white border-t px-4 py-6 space-y-4">
+          <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
+          <a href="#" class="block text-gray-700 hover:text-blue-600"
+            >Features</a
+          >
+          <a href="#" class="block text-gray-700 hover:text-blue-600"
+            >Pricing</a
+          >
+          <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
+          <button
+            class="w-full bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Add scroll behavior -->
+    <script>
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("sticky-header");
+        if (window.scrollY > 100) {
+          header.classList.add("bg-white/95", "backdrop-blur-sm", "shadow-lg");
+        } else {
+          header.classList.remove(
+            "bg-white/95",
+            "backdrop-blur-sm",
+            "shadow-lg"
+          );
+        }
+      });
+    </script>
+
+    <!-- 5. Side Navigation Header -->
+    <!--    <header
+      class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 lg:translate-x-0"
+    >
+      <div class="flex flex-col h-full">      
+        <div class="p-6 border-b">
+          <a href="#" class="text-2xl font-bold">LOGO</a>
+        </div>
+        <nav class="flex-1 overflow-y-auto p-6">
+          <div class="space-y-6">
+            <div>
+              <div
+                class="flex items-center justify-between text-gray-700 hover:text-blue-600 cursor-pointer"
+              >
+                <span>Dashboard</span>
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div class="mt-2 ml-4 space-y-2">
+                <a
+                  href="#"
+                  class="block text-sm text-gray-600 hover:text-blue-600"
+                  >Overview</a
+                >
+                <a
+                  href="#"
+                  class="block text-sm text-gray-600 hover:text-blue-600"
+                  >Analytics</a
+                >
+                <a
+                  href="#"
+                  class="block text-sm text-gray-600 hover:text-blue-600"
+                  >Reports</a
+                >
+              </div>
+            </div>
+         
+            <a href="#" class="block text-gray-700 hover:text-blue-600"
+              >Projects</a
+            >
+            <a href="#" class="block text-gray-700 hover:text-blue-600">Team</a>
+            <a href="#" class="block text-gray-700 hover:text-blue-600"
+              >Calendar</a
+            >
+            <a href="#" class="block text-gray-700 hover:text-blue-600"
+              >Documents</a
+            >
+            <a href="#" class="block text-gray-700 hover:text-blue-600"
+              >Reports</a
+            >
+          </div>
+        </nav> 
+        <div class="p-6 border-t">
+          <div class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-gray-200"></div>
+            <div class="ml-3">
+              <p class="text-sm font-medium">John Doe</p>
+              <p class="text-xs text-gray-500">View Profile</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header> 
+    <button
+      class="fixed top-4 left-4 z-20 lg:hidden bg-white p-2 rounded-lg shadow-lg"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
+    
+    <main class="lg:ml-64 min-h-screen bg-gray-100">
+    
+    </main> -->
+
+    <!-- 6. Creative Agency Header -->
+    <header class="relative min-h-screen bg-black text-white overflow-hidden">
+      <!-- Background Animation -->
+      <div class="absolute inset-0 opacity-20">
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 animate-pulse"
+        ></div>
+      </div>
+
+      <nav class="relative z-10 container mx-auto px-6">
+        <div class="flex justify-between items-center py-8">
+          <a href="#" class="text-2xl font-bold tracking-wider">AGENCY</a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-12">
+            <a href="#" class="hover:text-purple-400 transition-colors">Work</a>
+            <a href="#" class="hover:text-purple-400 transition-colors"
+              >Services</a
+            >
+            <a href="#" class="hover:text-purple-400 transition-colors"
+              >About</a
+            >
+            <a href="#" class="hover:text-purple-400 transition-colors"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden text-white p-2">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div
+          class="md:hidden bg-black/95 fixed inset-0 z-50 transform translate-x-full transition-transform duration-300"
+        >
+          <div
+            class="flex flex-col items-center justify-center h-full space-y-8"
+          >
+            <a href="#" class="text-2xl hover:text-purple-400">Work</a>
+            <a href="#" class="text-2xl hover:text-purple-400">Services</a>
+            <a href="#" class="text-2xl hover:text-purple-400">About</a>
+            <a href="#" class="text-2xl hover:text-purple-400">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 container mx-auto px-6 pt-20 pb-32">
+        <div class="max-w-4xl">
+          <h1 class="text-5xl md:text-7xl font-bold mb-8">
+            We Create
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400"
+            >
+              Digital Experiences
+            </span>
+          </h1>
+          <p class="text-xl text-gray-400 mb-12 max-w-2xl">
+            Transforming ideas into exceptional digital solutions
+          </p>
+          <button
+            class="bg-white text-black px-8 py-4 rounded-full text-lg font-medium hover:bg-purple-100 transition-colors"
+          >
+            View Our Work
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 7. Dynamic Glassmorphism Header -->
+    <header class="fixed w-full z-50">
+      <nav
+        class="mx-auto px-6 transition-all duration-300"
+        x-data="{ isScrolled: false }"
+        :class="{'py-6': !isScrolled, 'py-4 bg-white/80 backdrop-blur-lg shadow-lg': isScrolled}"
+      >
+        <div class="flex items-center justify-between">
+          <a href="#" class="text-2xl font-bold">GLASS</a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden lg:flex items-center space-x-8">
+            <a href="#" class="text-gray-800 hover:text-blue-600">Home</a>
+            <a href="#" class="text-gray-800 hover:text-blue-600">About</a>
+            <a href="#" class="text-gray-800 hover:text-blue-600">Services</a>
+            <a href="#" class="text-gray-800 hover:text-blue-600">Contact</a>
+            <button
+              class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700"
+            >
+              Get Started
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="lg:hidden p-2">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 8. Interactive Mega Menu Header -->
+    <header class="bg-white shadow-lg">
+      <div class="container mx-auto px-4">
+        <nav class="relative">
+          <div class="flex items-center justify-between py-6">
+            <a href="#" class="text-2xl font-bold">MEGA</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-8">
+              <!-- Products Dropdown -->
+              <div class="relative group">
+                <button
+                  class="flex items-center space-x-1 text-gray-700 hover:text-blue-600"
+                >
+                  <span>Products</span>
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                <!-- Mega Menu Panel -->
+                <div
+                  class="absolute left-0 w-screen max-w-7xl p-8 mt-5 bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 -translate-x-1/4 transform"
+                >
+                  <div class="grid grid-cols-5 gap-8">
+                    <!-- Category 1 -->
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                        Software
+                      </h3>
+                      <ul class="space-y-3">
+                        <li>
+                          <a href="#" class="text-gray-600 hover:text-blue-600"
+                            >Web Apps</a
+                          >
+                        </li>
+                        <li>
+                          <a href="#" class="text-gray-600 hover:text-blue-600"
+                            >Mobile Apps</a
+                          >
+                        </li>
+                        <li>
+                          <a href="#" class="text-gray-600 hover:text-blue-600"
+                            >Desktop Apps</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- Category 2 -->
+                    <div>
+                      <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                        Services
+                      </h3>
+                      <ul class="space-y-3">
+                        <li>
+                          <a href="#" class="text-gray-600 hover:text-blue-600"
+                            >Consulting</a
+                          >
+                        </li>
+                        <li>
+                          <a href="#" class="text-gray-600 hover:text-blue-600"
+                            >Development</a
+                          >
+                        </li>
+                        <li>
+                          <a href="#" class="text-gray-600 hover:text-blue-600"
+                            >Support</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- Feature Spotlight -->
+                    <div class="col-span-3 bg-gray-50 rounded-lg p-6">
+                      <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                        Featured
+                      </h3>
+                      <div class="grid grid-cols-2 gap-8">
+                        <!-- Feature 1 -->
+                        <div>
+                          <div
+                            class="aspect-video bg-gray-200 rounded-lg mb-4"
+                          ></div>
+                          <h4 class="font-medium mb-2">New Release</h4>
+                          <p class="text-sm text-gray-600">
+                            Check out our latest product updates
+                          </p>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div>
+                          <div
+                            class="aspect-video bg-gray-200 rounded-lg mb-4"
+                          ></div>
+                          <h4 class="font-medium mb-2">Case Study</h4>
+                          <p class="text-sm text-gray-600">
+                            See how others are using our platform
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#" class="text-gray-700 hover:text-blue-600"
+                >Solutions</a
+              >
+              <a href="#" class="text-gray-700 hover:text-blue-600"
+                >Resources</a
+              >
+              <a href="#" class="text-gray-700 hover:text-blue-600"
+                >Enterprise</a
+              >
+              <button
+                class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700"
+              >
+                Try Free
+              </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden p-2">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <script>
+      const sideNav = document.querySelector("header");
+      const toggleBtn = document.querySelector("button");
+      const main = document.querySelector("main");
+
+      toggleBtn.addEventListener("click", () => {
+        sideNav.classList.toggle("-translate-x-full");
+        main.classList.toggle("lg:ml-64");
+      });
+
+      // Закривати при кліку поза меню на мобільних
+      document.addEventListener("click", (e) => {
+        if (
+          window.innerWidth < 1024 &&
+          !sideNav.contains(e.target) &&
+          !toggleBtn.contains(e.target)
+        ) {
+          sideNav.classList.add("-translate-x-full");
+          main.classList.remove("lg:ml-64");
+        }
+      });
+    </script>
+  </body>
+</html>

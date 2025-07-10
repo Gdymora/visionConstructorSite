@@ -1,0 +1,11 @@
+@media (max-width:615px) {
+    h1 {
+        font-size: 45px;
+    }
+}
+
+@media (max-width:515px) {
+    h1 {
+        font-size: 38px;
+    }
+}

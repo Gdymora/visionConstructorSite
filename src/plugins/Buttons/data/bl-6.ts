@@ -1,0 +1,1 @@
+export const source = `<a href="#" class="flex text-black bg-white rounded-lg py-1 px-2 m-2 font-medium hover:text-red-500 border-black border"> <ion-icon name="logo-pinterest" class="m-1 text-xl text-red-700"></ion-icon> <div>Continue by Pinterest</div> </a>`;

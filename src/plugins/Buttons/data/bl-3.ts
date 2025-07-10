@@ -1,0 +1,1 @@
+export const source = `<a href="#" class="flex text-black bg-gradient-to-bl from-fuchsia-500 via-red-600 to-orange-400 rounded-lg py-1 px-2 m-2 font-medium hover:text-white border-black border"> <ion-icon name="logo-apple" class="m-1 text-xl"></ion-icon> <div>Download from Appstore</div> </a>`;

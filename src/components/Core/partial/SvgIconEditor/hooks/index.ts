@@ -1,0 +1,3 @@
+// src/hooks/index.ts
+export { useHistory } from './useHistory';
+// ...

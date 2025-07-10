@@ -1,0 +1,127 @@
+{
+    "header": {
+        "data": [
+            [
+                {
+                    "cta": "Start Creating Now",
+                    "logo": "MetaFlow3D",
+                    "menuItems": "[\"AI Templates\", \"Pricing\", \"Documentation\"]"
+                }
+            ]
+        ],
+        "table_structure": [
+            {
+                "name": "logo",
+                "type": "text",
+                "tag": "p",
+                "filter": null
+            },
+            {
+                "name": "menuItems",
+                "type": "text",
+                "tag": "p",
+                "filter": null
+            },
+            {
+                "name": "cta",
+                "type": "text",
+                "tag": "p",
+                "filter": null
+            }
+        ],
+        "default_type": "default_type",
+        "id": 7
+    },
+    
+    "hero": {
+        "data": [
+            [
+                {
+                    "title": "AI-Powered 3D Rendering and Workflow Management for Creative Professionals",
+                    "tagline": "GROW ON YOUR OWN BUSINESS",
+                    "subtitle": "Revolutionize your creative workflow with AI-powered 3D rendering and seamless project management.</br>Streamline ideation to delivery with ComfyUI, Blender integration, and intelligent asset management.",
+                    "buttonText": "Start Creating Now",
+                    "backgroundGrid": "true"
+                }
+            ]
+        ],
+        "table_structure": [
+            {
+                "name": "tagline",
+                "type": "text",
+                "tag": "p",
+                "filter": null
+            },
+            {
+                "name": "title",
+                "type": "text",
+                "tag": "p",
+                "filter": null
+            },
+            {
+                "name": "subtitle",
+                "type": "text",
+                "tag": "p",
+                "filter": null
+            },
+            {
+                "name": "buttonText",
+                "type": "text",
+                "tag": "p",
+                "filter": null
+            },
+            {
+                "name": "backgroundGrid",
+                "type": "text",
+                "tag": "p",
+                "filter": null
+            }
+        ],
+        "default_type": "default_type",
+        "id": 8
+    },
+    "showcaseImages": {
+        "data": [
+            [
+                {
+                    "image_src": "https://images.playground.com/842dc4dd78f446e88da45d4c847b2d6d.jpeg"
+                }
+            ],
+            [
+                {
+                    "image_src": "https://images.playground.com/50b479b2399f4e53a87cfcf40338d249.jpeg"
+                }
+            ],
+            [
+                {
+                    "image_src": "https://images.playground.com/320062403bfa4defa4996f5c5ccc46ff.jpeg"
+                }
+            ],
+            [
+                {
+                    "image_src": "https://images.playground.com/6cab76dedb4c4a0c8c8fc11dbce1adf6.jpeg"
+                }
+            ],
+            [
+                {
+                    "image_src": "https://images.playground.com/ae5cb48ae1274dc0a36d0e9c8793235d.jpeg"
+                }
+            ],
+            [
+                {
+                    "image_src": "https://images.playground.com/56cb3c3469f74239b149c2fa9860d2a4.jpeg"
+                }
+            ]
+        ],
+        "table_structure": [
+            {
+                "name": "image_src",
+                "type": "text",
+                "tag": "img",
+                "filter": null
+            }
+        ],
+        "default_type": "default_type",
+        "id": 10
+    }
+}

@@ -1,0 +1,178 @@
+{
+  "header": {
+    "logo": "MetaFlow3D",
+    "menuItems": ["AI Templates", "Pricing", "Documentation"],
+    "cta": "Start Creating with AI"
+  },
+  "hero": {
+    "tagline": "GROW ON YOUR OWN BUSINESS",
+    "title": "MetaFlow3D: AI-Powered 3D Rendering and Workflow Management Platform",
+    "subtitle": "Revolutionize your creative process with AI-powered 3D rendering and workflow automation.</br>Streamline projects from concept to delivery with MetaFlow3D's powerful tools and integrations.",
+    "buttonText": "Start Creating with AI",
+    "backgroundGrid": true
+  },
+  "showcaseImages": [
+    { "src": "/path/to/3d-render-1.jpg", "alt": "AI-powered 3D render example" },
+    { "src": "/path/to/workflow-ui.jpg", "alt": "MetaFlow3D workflow interface" },
+    { "src": "/path/to/blender-integration.jpg", "alt": "Blender plugin integration" },
+    { "src": "/path/to/comfyui-example.jpg", "alt": "ComfyUI integration example" },
+    { "src": "/path/to/ai-asset-management.jpg", "alt": "AI-powered asset management" }
+  ],
+  "features": {
+    "title": "[object Object]"
+  },
+  "workflowCategories": {
+    "title": "Categories (Workflows)",
+    "categories": [
+      {
+        "name": "Transfer your photo",
+        "description": "Use our workflow to easily create 3D models from your photos.",
+        "image": "/path/to/photo-transfer-workflow.jpg"
+      },
+      {
+        "name": "3D Scene Generation",
+        "description": "Generate complex 3D environments with AI assistance.",
+        "image": "/path/to/3d-scene-generation-workflow.jpg"
+      },
+      {
+        "name": "Character Design",
+        "description": "Streamline your character creation process with AI-powered tools.",
+        "image": "/path/to/character-design-workflow.jpg"
+      },
+      {
+        "name": "Texture Generation",
+        "description": "Create high-quality textures for your 3D models using AI.",
+        "image": "/path/to/texture-generation-workflow.jpg"
+      }
+    ]
+  },
+  "mission": {
+    "mission_statement": "Empowering creative professionals with AI-driven 3D tools, MetaFlow3D streamlines complex workflows for efficient, innovative content creation."
+  },
+  "toolsSection": {
+    "title": "Tools For Smooth 3D Workflows",
+    "tools": [
+      {
+        "name": "Blender Plugin",
+        "description": "Seamlessly integrate your 3D assets from Blender into our CMS system.",
+        "image": "/path/to/texture-generation-workflow.jpg"
+      },
+      {
+        "name": "ComfyUI",
+        "description": "Our intuitive node-based interface for creating and managing complex 3D rendering workflows.",
+        "image": "/path/to/texture-generation-workflow.jpg"
+      },
+      {
+        "name": "AI Result",
+        "description": "Leverage cutting-edge AI to enhance your 3D renders and streamline your creative process.",
+        "image": "/path/to/texture-generation-workflow.jpg"
+      }
+    ]
+  },
+  "ourProductSection": {
+    "title": "Achieve Reliable And Precise Outcomes With Full Support For Both Images And Videos.",
+    "image": "/path/to/support-image.jpg",
+    "description": "Perfect for businesses in diverse industries seeking efficiency..."
+  },
+  "categories": {
+    "title": "Perfect for businesses in diverse industries seeking efficiency...",
+    "industries": [
+      {
+        "title": "Automotive Industry",
+        "active": true,
+        "content": {
+          "mainImage": "/images/automotive/main.jpg",
+          "thumbnails": ["/images/automotive/thumb1.jpg", "/images/automotive/thumb2.jpg", "/images/automotive/thumb3.jpg", "/images/automotive/thumb4.jpg"]
+        }
+      },
+      {
+        "title": "Interior Design",
+        "active": false
+      },
+      {
+        "title": "Product Design",
+        "active": false
+      },
+      {
+        "title": "Fashion & Apparel",
+        "active": false
+      },
+      {
+        "title": "Furniture Design",
+        "active": false
+      },
+      {
+        "title": "Advertising & Digital Marketing",
+        "active": false
+      }
+    ]
+  },
+  "faqSection": {
+    "title": "Frequently Asked Questions",
+    "faqItems": [
+      {
+        "question": "What types of projects is MetaFlow3D suitable for?",
+        "answer": "MetaFlow3D is ideal for a wide range of 3D projects, including architectural visualization, product design, animation, and game development. Its AI-powered features and workflow management tools make it particularly suitable for creative agencies and businesses working on complex 3D rendering projects that require efficient asset management and collaboration.</br></br>Whether you're creating photorealistic interiors, designing product prototypes, or developing 3D characters for animation, MetaFlow3D can streamline your workflow and enhance your creative output."
+      },
+      {
+        "question": "How does MetaFlow3D integrate with existing 3D modeling tools?",
+        "answer": "Currently, MetaFlow3D offers seamless integration with Blender through our custom plugin, allowing users to access MetaFlow3D's powerful AI features and asset management capabilities directly within the Blender environment.</br></br>We're actively developing integrations for other popular 3D modeling tools such as Maya, 3ds Max, and Cinema 4D. Our goal is to provide a comprehensive ecosystem that supports various industry-standard software, ensuring that MetaFlow3D can enhance your existing workflow regardless of your preferred tools."
+      },
+      {
+        "question": "What is the learning curve for MetaFlow3D?",
+        "answer": "MetaFlow3D is designed with user-friendliness in mind, featuring an intuitive interface that allows users to quickly grasp its core functionalities. Most users find they can start benefiting from the platform within a few hours of exploration.</br></br>For those new to AI-assisted 3D workflows, we provide comprehensive documentation, video tutorials, and regular webinars to help you get up to speed. Our ComfyUI integration also offers a visual node-based interface, making it easier to understand and customize AI workflows.</br></br>While mastering all of MetaFlow3D's advanced features may take some time, the platform's design ensures that users can start improving their productivity almost immediately."
+      },
+      {
+        "question": "Can you explain the pricing model for MetaFlow3D?",
+        "answer": "MetaFlow3D offers a flexible, tiered pricing model to accommodate various team sizes and project needs:</br></br>1. Starter: Perfect for individuals and small teams, with basic AI features and asset management.</br>2. Professional: Ideal for growing creative agencies, with advanced AI capabilities and expanded storage.</br>3. Enterprise: Tailored for large organizations, offering full feature access, priority support, and custom integrations.</br></br>All plans include access to our Blender plugin and ComfyUI integration. We also offer a free trial period for you to experience the power of MetaFlow3D firsthand. For detailed pricing information, please visit our pricing page or contact our sales team for a custom quote."
+      },
+      {
+        "question": "How does AI enhance the 3D content creation process in MetaFlow3D?",
+        "answer": "AI is at the core of MetaFlow3D, revolutionizing the 3D content creation process in several ways:</br></br>1. Automated Texturing: AI algorithms can generate and apply realistic textures, saving hours of manual work.</br>2. Smart Asset Management: AI-powered tagging and search functionality make finding and organizing 3D assets effortless.</br>3. Intelligent Rendering Optimization: Our AI analyzes scenes to optimize render settings, reducing render times without compromising quality.</br>4. Procedural Generation: Create diverse environments and objects quickly using AI-driven procedural generation tools.</br>5. Style Transfer: Apply artistic styles to 3D models and environments with a single click.</br></br>These AI-powered features not only speed up the creation process but also open up new creative possibilities, allowing artists to focus on higher-level design decisions while the AI handles time-consuming technical tasks."
+      },
+      {
+        "question": "How does MetaFlow3D ensure the security and privacy of our project data?",
+        "answer": "At MetaFlow3D, we take data security and privacy very seriously. Our platform employs industry-standard encryption protocols for data transfer and storage. All project data is stored in secure, redundant cloud servers with regular backups.</br></br>We implement strict access controls and authentication measures to ensure that only authorized team members can access your projects. Additionally, our system uses advanced AI to detect and prevent potential security threats.</br></br>MetaFlow3D is fully compliant with GDPR and other relevant data protection regulations. We also offer the option for enterprise clients to use on-premises deployments for maximum data control and security."
+      }
+    ]
+  },
+  "callToAction": {
+    "title": "Join the Creative Revolution: Elevate Your 3D Workflow with MetaFlow3D</br>Transform Your Agency's Potential Today!",
+    "buttonText": "Start Creating Now",
+    "testimonials": {
+      "title": "Words From Our Lovely Clients",
+      "items": [
+        {
+          "quote": "I was skeptical at first, but now I can't imagine our content operations without it. It's that impactful.",
+          "author": {
+            "name": "Jessica Saunders",
+            "position": "CEO",
+            "company": "FAIRLIGHT MANAGEMENT",
+            "image": "https://via.placeholder.com/40"
+          }
+        },
+        {
+          "quote": "I was skeptical at first, but now I can't imagine our content operations without it. It's that impactful.",
+          "author": {
+            "name": "Jessica Saunders",
+            "position": "CEO",
+            "company": "FAIRLIGHT MANAGEMENT",
+            "image": "https://via.placeholder.com/40"
+          }
+        },
+        {
+          "quote": "I was skeptical at first, but now I can't imagine our content operations without it. It's that impactful.",
+          "author": {
+            "name": "Jessica Saunders",
+            "position": "CEO",
+            "company": "FAIRLIGHT MANAGEMENT",
+            "image": "https://via.placeholder.com/40"
+          }
+        }
+      ]
+    }
+  },
+  "footer": {
+    "text": "&copy; 2024 MetaFlow3D. All rights reserved."
+  }
+}

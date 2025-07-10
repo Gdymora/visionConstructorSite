@@ -1,0 +1,241 @@
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import useAxios from "../../Hooks/useAxios";
+import Swal from "sweetalert2";
+
+export interface Fields {
+  table_name: string;
+  project_id?: string;
+  type_data?: string;
+  create_table_data?: boolean;
+  table_structure: {
+    name: string;
+    type: string;
+    tag: string;
+    filter: string;
+  }[];
+}
+const apiUrl = process.env.REACT_APP_API_URL;
+
+const TableStructureForm = ({ onCreateTable }) => {
+  const [fields, setFields] = useState<Fields>({
+    table_name: "",
+    type_data: "",
+    table_structure: [{ name: "", type: "", tag: "", filter: null }],
+    project_id: null,
+  });
+
+  const [errors, setErrors] = useState({});
+  const { sendRequest: sendRequestProjects, data: dataProjects, error: errorProjects } = useAxios(`${apiUrl}/projects`);
+  const [token, setToken] = useState("");
+  const [projects, setProjects] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setToken(token);
+
+    sendRequestProjects(
+      "get",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  }, []);
+
+  useEffect(() => {
+    if (dataProjects) {
+      setProjects(dataProjects);
+    }
+  }, [dataProjects]);
+
+  useEffect(() => {
+    // Якщо сталася помилка
+    const status = errorProjects?.response.status;
+
+    if (errorProjects && status !== 401) {
+      Swal.fire({
+        icon: "error",
+        title: "Error " + errorProjects?.response.status,
+        text: errorProjects?.response.statusText,
+      });
+    }
+  }, [errorProjects]);
+
+  const handleAddField = () => {
+    setFields({ ...fields, table_structure: [...fields.table_structure, { name: "", type: "", tag: "", filter: null }] });
+  };
+
+  const handleRemoveField = (index) => {
+    const newFields = { ...fields };
+    newFields.table_structure.splice(index, 1);
+    setFields(newFields);
+  };
+
+  const handleChange = (index, key, value) => {
+    setErrors({});
+    const newFields = { ...fields };
+    newFields.table_structure[index][key] = value;
+    setFields(newFields);
+  };
+
+  const handleTableNameChange = (value) => {
+    setFields({ ...fields, table_name: value });
+  };
+
+  const handleProjectChange = (value) => {
+    setFields({ ...fields, project_id: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let newErrors = {};
+    fields.table_structure.forEach((field, index) => {
+      if (!field.name && !field.type) {
+        newErrors[index] = `Name is required and Type is required`;
+      } else if (!field.type) {
+        newErrors[index] = `Type is required`;
+      }
+    });
+    if (!fields.table_name) {
+      newErrors["table_name"] = `Table name is required`;
+    }
+    if (!fields.project_id) {
+      newErrors["project_id"] = `Project id is required`;
+    }
+    if (Object.keys(newErrors).length === 0) {
+      onCreateTable(fields);
+      setFields({ table_name: "", table_structure: [{ name: "", type: "", tag: "", filter: null }], project_id: fields.project_id });
+    } else {
+      // Є помилки, встановлюємо їх у стані
+      setErrors(newErrors);
+    }
+  };
+
+  return (
+    <div className="w-full min-w-3xl max-w-3xl p-4 bg-white shadow-md rounded-md">
+      <h2 className="text-lg font-semibold mb-4">Create Table</h2>
+
+      <form onSubmit={handleSubmit}>
+        <div>
+          <>
+            <input
+              type="text"
+              placeholder="Table name"
+              value={fields.table_name}
+              onChange={(e) => handleTableNameChange(e.target.value)}
+              className="w-full min-w-3xl max-w-3xl px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            />
+            {errors["table_name"] && (
+              <div className="flex text-red-500">
+                <span>{errors["table_name"]}</span>
+              </div>
+            )}
+            <select
+              value={fields.project_id}
+              onChange={(e) => handleProjectChange(e.target.value)}
+              className="mt-2 w-full max-w-98 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            >
+              <option value="">Select Project</option>
+              {projects &&
+                projects.map((project) => (
+                  <option key={project.id} value={project.id}>
+                    {project.name}
+                  </option>
+                ))}
+            </select>
+            {errors["project_id"] && (
+              <div className="flex text-red-500">
+                <span>{errors["project_id"]}</span>
+              </div>
+            )}
+          </>
+        </div>
+        {fields.table_structure.map((field, index) => (
+          <div key={index} className="mb-4">
+            <h3 className="my-4">Section {index + 1}</h3>
+            <div className="flex">
+              <input
+                type="text"
+                placeholder="Field name"
+                value={field.name}
+                onChange={(e) => handleChange(index, "name", e.target.value)}
+                className="mt-2 w-full max-w-98 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              />
+              <button
+                type="button"
+                onClick={handleAddField}
+                style={{ backgroundColor: "#abcd89" }}
+                className="inline-block mt-2 ml-1 inline-block px-3 py-1 text-white rounded-md "
+              >
+                Add
+              </button>
+            </div>
+            <div className="flex">
+              <select
+                value={field.type}
+                onChange={(e) => handleChange(index, "type", e.target.value)}
+                className="mt-2 w-full max-w-98 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              >
+                <option value="">Select type</option>
+                <option value="text">Text</option>
+                <option value="number">Number</option>
+                <option value="date">Date</option>
+                <option value="markdown">Markdown</option> 
+                <option value="array">Array</option> 
+                {/* Add more types as needed */}
+              </select>
+
+              <button
+                type="button"
+                onClick={() => handleRemoveField(index)}
+                style={{ backgroundColor: "#d69292" }}
+                className="bg-none mt-2 ml-1 inline-block px-4 py-1 text-white rounded-md"
+              >
+                <FontAwesomeIcon icon={faTrashCan} />
+              </button>
+            </div>
+            <div className="mb-4 flex">
+              <select
+                value={field.tag}
+                onChange={(e) => handleChange(index, "tag", e.target.value)}
+                className="mt-2 w-full max-w-98 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              >
+                <option value="">Select tag</option>
+                <option value="img">image</option>
+                <option value="p">text</option>
+                <option value="div">div</option>
+                {/* Add more types as needed */}
+              </select>
+            </div>
+            <div className="flex justify-start" style={{ display: index > 0 ? "none" : "block" }}>
+              <label htmlFor="filter">#filter</label>
+              <input
+                id="filter"
+                type="checkbox"
+                value={field.filter}
+                onChange={(e) => handleChange(index, "filter", e.target.value)}
+                className="m-2 px-3 justify-left py-2 "
+              />
+            </div>
+            {errors[index] && (
+              <div className="flex text-red-500">
+                <span>{errors[index]}</span>
+              </div>
+            )}
+          </div>
+        ))}
+        <div className="flex justify-end">
+          <button type="submit" style={{ backgroundColor: "#6565e5" }} className="inline-flex justify-right  px-4 py-2 text-white rounded-md appearance-none">
+            Submit
+          </button>{" "}
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default TableStructureForm;

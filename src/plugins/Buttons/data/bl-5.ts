@@ -1,0 +1,1 @@
+export const source = ` <a href="#" class="flex text-black bg-white rounded-lg py-1 px-2 m-2 font-medium hover:text-stone-700 border-black border"> <ion-icon name="logo-github" class="m-1 text-xl "></ion-icon> <div>Login by GitHub</div> </a> `;

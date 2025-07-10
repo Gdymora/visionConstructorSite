@@ -1,0 +1,1 @@
+export const source = `<a href="#" class="flex text-black bg-gradient-to-tr from-green-300 via-blue-500 to-purple-600 rounded-lg py-1 px-2 m-2 font-medium hover:text-white border-black border"> <ion-icon name="logo-google-playstore" class="m-1 text-xl"></ion-icon> <div>Download from Playstore</div> </a>`;

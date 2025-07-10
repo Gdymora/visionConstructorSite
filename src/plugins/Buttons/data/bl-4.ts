@@ -1,0 +1,1 @@
+export const source = `<a href="#" class="flex text-black bg-white rounded-lg py-1 px-2 m-2 font-medium hover:text-blue-600 border-black border"> <ion-icon name="logo-Facebook" class="m-1 text-xl text-blue-600"></ion-icon> <div>Login by Facebook</div> </a>`;

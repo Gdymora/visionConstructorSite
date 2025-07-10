@@ -1,0 +1,1 @@
+export const source = `<a href="#" class="flex text-red-500 bg-white rounded-lg px-2 m-2 font-medium hover:border-red-500 hover:border-2"> <ion-icon name="mic-outline" class="m-1 text-xl"></ion-icon> <div>Record</div> </a>`;
