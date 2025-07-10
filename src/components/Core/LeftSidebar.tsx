@@ -17,7 +17,7 @@ const defaultTabProps = {
 };
 
 export default function LeftSidebar({ className }: React.HTMLAttributes<HTMLDivElement>) {
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(3);
 
   return (
     <div className={cx("flex flex-col", className)}>
@@ -28,8 +28,8 @@ export default function LeftSidebar({ className }: React.HTMLAttributes<HTMLDivE
         <Tab {...defaultTabProps} label={<Icon size={1} path={mdiViewGridPlus} />} />
         <Tab {...defaultTabProps} label={<Icon size={1} path={mdiTextBoxMultiple} />} />
       </Tabs>
-      <div className={cx("overflow-y-auto h-[800px] sm:h-[700px] md:h-[600px] lg:h-[800px] flex-grow border-t", MAIN_BORDER_COLOR)}>
-        {selectedTab === 0 && (
+    <div className={cx("overflow-y-auto border-t", MAIN_BORDER_COLOR)} 
+     style={{ height: 'calc(100vh - 400px)' }}>   {selectedTab === 0 && (
           <>
             <SelectorsProvider>{(props) => <CustomSelectorManager {...props} />}</SelectorsProvider>
             <StylesProvider>{(props) => <CustomStyleManager {...props} />}</StylesProvider>
