@@ -51,7 +51,7 @@ const Navbar = () => {
         </li>
         <li className="m-1">
           <button onClick={() => setBlockVisible(true)}>Blocks</button>
-        </li> 
+        </li>
       </ul>
 
       {templatesPanelVisible && (
@@ -92,10 +92,19 @@ const Navbar = () => {
           onClose={() => setBlockVisible(false)}
           title="Blocks"
           position="right"
-          width="max-w-3xl"
+          minWidth={350} // мінімальна ширина
+          maxWidth={1200} // максимальна ширина
+          resizable={true} // увімкнути/вимкнути зміну розміру
         >
           <BlockCategoriesManager
-            categories={["Header", "Content", "Features", "Gallery", "Contact"]}
+            categories={[
+              "Navigation",
+              "Header",
+              "Content",
+              "Features",
+              "Gallery",
+              "Contact",
+            ]}
           />
         </SideModal>
       )}

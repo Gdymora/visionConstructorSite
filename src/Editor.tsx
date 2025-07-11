@@ -17,6 +17,7 @@ import "./assets/style/style.css";
 
 import scriptEditor from "./module/script-editor-master";
 import htmlEditor from "./module/content-editor-master";
+import exportReact from "./module/export-react";
 import exportZip from "./module/export-zip";
 import imageEditor from "./module/image-editor";
 import touchMobile from "./module/touch-master";
@@ -250,6 +251,7 @@ export default function App() {
       options={getGjsOptions(authToken) as EditorConfig}
       plugins={[
         (editor) => htmlEditor(editor, {}),
+        (editor) => exportReact(editor, {}),
         (editor) => scriptEditor(editor, {}),
         (editor) => exportZip(editor, {}),
         (editor) => deployToServer(editor, {}),

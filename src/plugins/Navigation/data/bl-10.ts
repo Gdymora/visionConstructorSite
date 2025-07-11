@@ -1,47 +1,152 @@
 export const source = `
-<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"> <!--Totally optional :) -->
-<div class="bg-gray-400 font-sans leading-normal tracking-normal">
-<nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6 fixed w-full z-10 top-0">
-    <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
-            <span class="text-2xl pl-2"><i class="em em-grinning"></i> Brand McBrandface</span>
-        </a>
+<style>
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.brand-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.hamburger:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger span {
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    margin: 2px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+@media (max-width: 768px) {
+    .mobile-menu {
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .mobile-menu.active {
+        transform: translateY(0);
+    }
+}
+</style>
+
+<nav class="relative bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800 shadow-xl border-b border-slate-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            
+            <!-- Логотип -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <span class="text-white font-bold text-xl">🚀</span>
+                </div>
+                <div class="text-white">
+                    <h1 class="text-xl font-bold brand-gradient">Brand McBrandface</h1>
+                    <p class="text-xs text-gray-300 hidden sm:block">Сучасні рішення</p>
+                </div>
+            </div>
+
+            <!-- Десктопне меню -->
+            <div class="hidden lg:flex items-center space-x-1">
+                <a href="#" class="nav-link px-4 py-2 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300">
+                    Головна
+                </a>
+                <a href="#" class="nav-link px-4 py-2 text-gray-300 hover:text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300">
+                    Послуги
+                </a>
+                <a href="#" class="nav-link px-4 py-2 text-gray-300 hover:text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300">
+                    Про нас
+                </a>
+                <a href="#" class="nav-link px-4 py-2 text-gray-300 hover:text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300">
+                    Контакти
+                </a>
+                <button class="ml-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    Замовити
+                </button>
+            </div>
+
+            <!-- Мобільна кнопка -->
+            <div class="lg:hidden">
+                <button id="nav-toggle" class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="block lg:hidden">
-        <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-white hover:border-white">
-            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-        </button>
-    </div>
-
-    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
-        <ul class="list-reset lg:flex justify-end flex-1 items-center">
-            <li class="mr-3">
-                <a class="inline-block py-2 px-4 text-white no-underline" href="#">Active</a>
-            </li>
-            <li class="mr-3">
-                <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">link</a>
-            </li>
-            <li class="mr-3">
-                <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">link</a>
-            </li>
-            <li class="mr-3">
-                <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">link</a>
-            </li>
-        </ul>
+    <!-- Мобільне меню -->
+    <div id="nav-content" class="mobile-menu lg:hidden absolute w-full bg-slate-800/95 backdrop-blur-md border-t border-slate-700 shadow-2xl">
+        <div class="px-4 py-6 space-y-3">
+            <a href="#" class="block px-4 py-3 text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300">
+                Головна
+            </a>
+            <a href="#" class="block px-4 py-3 text-gray-300 hover:text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300">
+                Послуги
+            </a>
+            <a href="#" class="block px-4 py-3 text-gray-300 hover:text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300">
+                Про нас
+            </a>
+            <a href="#" class="block px-4 py-3 text-gray-300 hover:text-white font-medium rounded-lg hover:bg-white/10 transition-all duration-300">
+                Контакти
+            </a>
+            <button class="w-full mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg">
+                Замовити
+            </button>
+        </div>
     </div>
 </nav>
 
-<!--Container-->
-<div class="container shadow-lg mx-auto bg-white mt-24 md:mt-18">
-
-</div>
-
 <script>
-    //Javascript to toggle the menu
-    document.getElementById('nav-toggle').onclick = function(){
-        document.getElementById("nav-content").classList.toggle("hidden");
-    }
+document.getElementById('nav-toggle').onclick = function(){
+    const navContent = document.getElementById("nav-content");
+    const hamburger = this;
+    
+    navContent.classList.toggle("active");
+    hamburger.classList.toggle("active");
+}
 </script>
-
-</div>`;
+`;

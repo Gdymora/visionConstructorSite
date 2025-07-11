@@ -15,10 +15,16 @@ import { source as st14 } from "./data/head-14";
 import { source as a1s } from "./data/icons/cta-1";
 
 const getSvgHtml = (svg) => {
-  if (typeof window === "undefined") return "";
-  svg.setAttribute("width", "100%");
-  svg.setAttribute("height", "100%");
-  return svg.outerHTML;
+  if (typeof window === "undefined" || !svg) return "";
+  
+  try {
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    return svg.outerHTML;
+  } catch (error) {
+    console.error("Помилка при обробці SVG:", error);
+    return "";
+  }
 };
 
 const sources = [
@@ -27,7 +33,7 @@ const sources = [
     class: "",
     label: a1s,
     content: st1,
-    сss: `    
+    css: `    
     @media (max-width: 1024px) {
       .hidden-mobile {
         display: none;
@@ -41,7 +47,7 @@ const sources = [
        opacity: 1;
     }`,
     category: "Header",
-    script: `console.log(God like)`,
+    script: `console.log('God like')`,
   },
   {
     id: "header-2",
@@ -131,7 +137,7 @@ const sources = [
             background-size: 20px 20px;
             pointer-events: none;
           }`,
-    script: `console.log(God like)`,
+    script: `console.log('God like')`,
     category: "Header",
   },
   {
@@ -144,53 +150,99 @@ const sources = [
 ];
 
 export default (editor, options: any = {}) => {
+  // Перевіряємо, чи доступний editor та його методи
+  if (!editor || !editor.Blocks) {
+    console.error("Editor або Blocks недоступні");
+    return;
+  }
+
   const bm = editor.Blocks;
 
   sources.forEach((s) => {
     console.log("Adding block:", s.id, s.script);
 
-    bm.add(s.id, {
-      media: getSvgHtml(editor.$(s.label).get(0)),
-      attributes: { class: `${s.class}` },
-      content: s.content,
-      css: s.css,
-      category: {
-        label: s.category,
-        open: s.category === options.openCategory,
-      },
-    });
-  });
-  editor.on("block:drag:stop", function (model) {
-    if (!model || !model.components) return;
-
-    const innerComponents = model.components();
-
-    innerComponents.forEach((comp) => {
-      if (comp.get("type") === "script") {
-        const scriptContent = comp
-          .toHTML()
-          .replace(/<\/?script>/g, "")
-          .trim();
-        // Безпечно додаємо до wrapper
-        try {
-          const wrapper = editor.DomComponents.getWrapper();
-          if (wrapper) {
-            const currentScript = wrapper.get("script") || "";
-            wrapper.set(
-              "script",
-              currentScript
-                ? `${currentScript}\n${scriptContent}`
-                : scriptContent,
-              { silent: true }
-            );
-            // model.set("script", scriptContent); // Додаємо до моделі, а не до wrapper
-            console.log("Скрипт додано до wrapper:", scriptContent);
-          }
-        } catch (error) {
-          console.error("Помилка при додаванні скрипта:", error);
+    try {
+      // Безпечна обробка SVG
+      let mediaHtml = "";
+      
+      if (editor.$ && s.label) {
+        const svgElement = editor.$(s.label).get(0);
+        if (svgElement) {
+          mediaHtml = getSvgHtml(svgElement);
         }
-        comp.remove();
       }
-    });
+
+      // Якщо не вдалося отримати SVG, використовуємо fallback
+      if (!mediaHtml && s.label) {
+        // Якщо s.label це вже HTML рядок
+        if (typeof s.label === 'string') {
+          mediaHtml = s.label;
+        } else {
+          // Fallback іконка
+          mediaHtml = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 21l4-7 4 7" stroke="currentColor" stroke-width="2"/>
+          </svg>`;
+        }
+      }
+
+      bm.add(s.id, {
+        media: mediaHtml,
+        attributes: { class: `${s.class || ''}` },
+        content: s.content,
+        css: s.css,
+        category: {
+          label: s.category,
+          open: s.category === options.openCategory,
+        },
+      });
+
+    } catch (error) {
+      console.error(`Помилка при додаванні блоку ${s.id}:`, error);
+    }
+  });
+
+  // Безпечна обробка drag and drop events
+  editor.on("block:drag:stop", function (model) {
+    if (!model || !model.components) {
+      console.warn("Model або components недоступні");
+      return;
+    }
+
+    try {
+      const innerComponents = model.components();
+
+      innerComponents.forEach((comp) => {
+        if (comp.get("type") === "script") {
+          const scriptContent = comp
+            .toHTML()
+            .replace(/<\/?script>/g, "")
+            .trim();
+            
+          // Безпечно додаємо до wrapper
+          try {
+            const wrapper = editor.DomComponents?.getWrapper();
+            if (wrapper) {
+              const currentScript = wrapper.get("script") || "";
+              wrapper.set(
+                "script",
+                currentScript
+                  ? `${currentScript}\n${scriptContent}`
+                  : scriptContent,
+                { silent: true }
+              );
+              console.log("Скрипт додано до wrapper:", scriptContent);
+            }
+          } catch (error) {
+            console.error("Помилка при додаванні скрипта:", error);
+          }
+          
+          // Видаляємо script компонент
+          comp.remove();
+        }
+      });
+    } catch (error) {
+      console.error("Помилка при обробці drag and drop:", error);
+    }
   });
 };
